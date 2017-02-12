@@ -26,7 +26,6 @@ public class AITicTacToe {
 	}
 
 	public static void askForInput1() { 
-      System.out.println("Github Test part 2");
 		int first = jarvisMove(counter);  
 		System.out.println("Jarvis takes Spot " + first + ".");
 		boolean duplicate = checkForDuplicate(first);
@@ -282,17 +281,12 @@ public class AITicTacToe {
       
       //turn three logic
       if(counter == 4){
-         if(xCheckForTwo()){
-               if(checkForDuplicate(xMoveForTwo())){
-                  return xMoveForTwo();
-               }
-            }  
-         if(oCheckForTwo()){
-           if(checkForDuplicate(oMoveForTwo())){
-               return oMoveForTwo(); 
+         if(CheckForTwo()){
+            if(checkForDuplicate(MoveForTwo())){
+               return MoveForTwo();
             }
          }    
-            
+                     
          if(!checkForDuplicate(6)){
             return 5;         
          }else if(checkForDuplicate(9)){
@@ -306,19 +300,12 @@ public class AITicTacToe {
                 
      //turn four logic       
       if(counter == 6){
-         if(xCheckForTwo()){
-            System.out.println(xMoveForTwo()); 
-            if(checkForDuplicate(xMoveForTwo())){
-               return xMoveForTwo();
+         if(CheckForTwo()){
+            if(checkForDuplicate(MoveForTwo())){
+               return MoveForTwo();
             }
-         }                      
-         if(oCheckForTwo()){
-            if(checkForDuplicate(oMoveForTwo())){
-               return oMoveForTwo();                        
-            }
-         }    
-                 
-           if(checkForDuplicate(9)){
+         }                                      
+         if(checkForDuplicate(9)){
                return 9; 
             }else  if (checkForDuplicate(7)){
                return 7; 
@@ -330,16 +317,11 @@ public class AITicTacToe {
       
        //turn five logic       
       if(counter == 8){
-         if(xCheckForTwo()){
-               if(checkForDuplicate(xMoveForTwo())){
-                  return xMoveForTwo();
-               }                           
-            } 
-         if(oCheckForTwo()){
-            if(checkForDuplicate(oMoveForTwo())){
-               return oMoveForTwo();                        
+         if(CheckForTwo()){
+            if(checkForDuplicate(MoveForTwo())){
+               return MoveForTwo();
             }
-         }   
+         }    
          if(checkForDuplicate(9)){
                return 9; 
             } else if (checkForDuplicate(7)){
@@ -351,59 +333,31 @@ public class AITicTacToe {
          
          //turn six logic       
       if(counter == 10){
-         if(xCheckForTwo()){
-               if(checkForDuplicate(xMoveForTwo())){
-                  return xMoveForTwo();
-               }                           
-            } 
-         if(oCheckForTwo()){
-            if(checkForDuplicate(oMoveForTwo())){
-               return oMoveForTwo();                        
+         if(CheckForTwo()){
+            if(checkForDuplicate(MoveForTwo())){
+               return MoveForTwo();
             }
-         }          
+         }           
       } 
-         System.out.println("Spillage");
+      
+       System.out.println("Spillage");
        return 7;    
     }   
 
-   public static boolean oCheckForTwo() {
-
-		//Check for rows 
-		for (int x = 0; x <= 2; x++) {
-			
-			int beginning = 2;
-			if (grid[x][1] == beginning && grid[x][0] == beginning || grid[x][2] == beginning && grid[x][0] == beginning || grid[x][2] == beginning && grid[x][1] == beginning){
-		   System.out.println("test rows");
-            return true; 
-			
-		   }
-      }   
-
-		//Check for columns
-		for (int y = 0; y <= 2; y++) {
-			
-			int beginning = 2;
-         if (grid[1][y] == beginning && grid[0][y] == beginning || grid[2][y] == beginning && grid[0][y] == beginning || grid[2][y] == beginning && grid[1][y] == beginning){
-				return true; 
-			
-         }            
-		}
-
-		//Check for diagonals
-		int beginning = 2;
-      
-		if(grid[0][0] == beginning && grid[1][1] == beginning || grid[2][2] == beginning && grid[1][1] == beginning || grid[2][2] == beginning && grid[0][0] == beginning){
-			return true;
-      }   
-		return false; 
-	}
-   
-   public static boolean xCheckForTwo() {
+ 
+   public static boolean CheckForTwo() {
+            
+            int beginning = 0; 
+            
+   			if(counter % 2 != 0){
+                 beginning = 2;
+            }else{
+               beginning = 1; 
+             }   
 
    		//Check for rows 
    		for (int x = 0; x <= 2; x++) {
    			
-   			int beginning = 1;
    			if (grid[x][1] == beginning && grid[x][0] == beginning || grid[x][2] == beginning && grid[x][0] == beginning || grid[x][2] == beginning && grid[x][1] == beginning){
                return true; 
    			
@@ -413,7 +367,6 @@ public class AITicTacToe {
    		//Check for columns
    		for (int y = 0; y <= 2; y++) {
    			
-   			int beginning = 1;
             if (grid[1][y] == beginning && grid[0][y] == beginning || grid[2][y] == beginning && grid[0][y] == beginning || grid[2][y] == beginning && grid[1][y] == beginning){
            
    				return true; 
@@ -422,7 +375,6 @@ public class AITicTacToe {
    		}
    
    		//Check for diagonals
-   		int beginning = 1;
          
    		if(grid[0][0] == beginning && grid[1][1] == beginning){
             return true; 
@@ -437,123 +389,19 @@ public class AITicTacToe {
    	}
    
       
-      public static int oMoveForTwo() {
+   public static int MoveForTwo() {
    
+            int beginning = 0; 
+            
+   			if(counter % 2 != 0){
+                 beginning = 2;
+            }else{
+               beginning = 1; 
+             }   
+
    		//Move for rows 
    		for (int x = 0; x <= 2; x++) {
-   			
-   			int beginning = 2;
-            
-   			if (grid[x][1] == beginning && grid[x][0] == beginning && grid[x][2] == 0){
-                  if(x == 1){
-                     return 6; 
-                  }if (x == 0){
-                     return 3; 
-                  }if (x == 2){
-                     return 9; 
-                  }
-               }
-            
-            if( grid[x][2] == beginning && grid[x][0] == beginning && grid[x][1] == 0){
-                  if(x == 1){
-                     return 5; 
-                  }if (x == 0){
-                     return 2; 
-                  }if(x ==2){
-                     return 8; 
-                  }
-            }
-           
-            if(grid[x][2] == beginning && grid[x][1] == beginning && grid[x][0] == 0){
-               if(x == 1){
-                  return 4; 
-               }if (x == 0){
-                  return 1; 
-               }if(x == 2){
-                  return 7; 
-               }
-            }   
-   			
-   		}
-   
-   			//Move for columns 
-   		for (int y = 0; y <= 2; y++) {
-   			
-   			int beginning = 2;
-   
-   			if (grid[1][y] == beginning && grid[0][y] == beginning && grid[2][y] == 0){
-                  if(y == 1){
-                  return 8; 
-               }if (y == 0){
-                  return 7; 
-               }else {
-                  return 9; 
-               }
-   
-   
-            }
-            
-            
-            if( grid[2][y] == beginning && grid[0][y] == beginning && grid[1][y] == 0){
-               if(y == 1){
-                  return 5; 
-               }else if (y == 0){
-                  return 4; 
-               }else {
-                  return 6; 
-               }
-   
-            }
-               
-            if(grid[2][y] == beginning && grid[1][y] == beginning && grid[0][y] == 0){
-                if(y == 1){
-                  return 2; 
-               }else if (y == 0){
-                  return 1; 
-               }else {
-                  return 3; 
-               }
-   
-            }   
-   			
-   		
-   
-   		//Move for diagonals
-   	
-   		if(grid[0][0] == beginning && grid[2][2] == beginning){
-            return 5;  
-         }
-            
-   		if(grid[0][2] == beginning && grid[2][0] == beginning){
-   			return 5; 
-         }
-         
-         if(grid[0][2] == beginning && grid[1][1] == beginning){
-   			return 7; 
-         }
-      
-         if(grid[2][0] == beginning && grid[1][1] == beginning){
-   			return 3; 
-         }
-         
-         if(grid[1][1] == beginning && grid[2][2] == beginning){
-            return 1;  
-         }
-         
-         if(grid[1][1] == beginning && grid[0][0] == beginning){
-            return 9;
-         }
-         
-   	}
-      return 1;   
-   }
-   public static int xMoveForTwo() {
-   
-   		//Move for rows 
-   		for (int x = 0; x <= 2; x++) {
-   			
-   			int beginning = 1;
-            
+   			           
    			if (grid[x][1] == beginning && grid[x][0] == beginning && grid[x][2] == 0){
                   if(x == 1){
                      if(checkForDuplicate(6)){
@@ -599,9 +447,7 @@ public class AITicTacToe {
    
    			//Move for columns 
    		for (int y = 0; y <= 2; y++) {
-   			
-   			int beginning = 1;
-   
+   		   
    			if (grid[1][y] == beginning && grid[0][y] == beginning && grid[2][y] == 0){
                if(y == 1){
                   if(checkForDuplicate(8)){
@@ -646,7 +492,6 @@ public class AITicTacToe {
    
             }   
    			
-   		
    
    		//Move for diagonals
    	
