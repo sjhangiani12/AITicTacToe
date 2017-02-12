@@ -26,7 +26,7 @@ public class AITicTacToe {
 	}
 
 	public static void askForInput1() { 
-      System.out.println("Github Test");
+      System.out.println("Github Test part 2");
 		int first = jarvisMove(counter);  
 		System.out.println("Jarvis takes Spot " + first + ".");
 		boolean duplicate = checkForDuplicate(first);
