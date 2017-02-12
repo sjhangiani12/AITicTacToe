@@ -261,9 +261,8 @@ public class AITicTacToe {
 
 	}
    
-      
    public static int jarvisMove(int counter){
-   System.out.println(counter); 
+    System.out.println(counter); 
       //turn one logic
       if( counter == 0){
          return 1;
@@ -343,7 +342,6 @@ public class AITicTacToe {
        System.out.println("Spillage");
        return 7;    
     }   
-
  
    public static boolean CheckForTwo() {
             
