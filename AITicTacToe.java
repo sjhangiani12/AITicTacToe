@@ -25,8 +25,44 @@ public class AITicTacToe {
 
 	}
 
-	public static void askForInput1() { 
-		int first = jarvisMove(counter);  
+	public static void askForInput1() {
+  
+   		int first = 0; 
+   
+       if(counter == 0){
+         jarvisOne(counter);
+         first = jarvisOne(counter);
+      }   
+            
+      if(counter == 2){
+         jarvisTwo(counter);
+         first = jarvisTwo(counter);
+     }   
+      
+      if(counter == 4){
+           jarvisThree(counter);
+         first = jarvisThree(counter);
+      }  
+                
+      if(counter == 6){
+         jarvisFour(counter);
+         first = jarvisFour(counter);
+      }   
+            
+      
+      
+       //turn five logic       
+      if(counter == 8){
+         jarvisFive(counter);
+         first = jarvisFive(counter);
+      }
+                  
+         //turn six logic       
+      if(counter == 10){
+           jarvisSix(counter);
+         first = jarvisSix(counter);
+      }
+   
 		System.out.println("Jarvis takes Spot " + first + ".");
 		boolean duplicate = checkForDuplicate(first);
 		if (!duplicate){
@@ -52,7 +88,7 @@ public class AITicTacToe {
 
 		if(checkForTie()) {
 			print();
-			System.out.println("Sorry! It's a tie! No one wins :(");
+			System.out.println("It's a tie! No one wins");
 			System.out.println();
 			System.exit(0);
 		}
@@ -261,26 +297,23 @@ public class AITicTacToe {
 
 	}
    
-   public static int jarvisMove(int counter){
-    System.out.println(counter); 
-      //turn one logic
-      if( counter == 0){
-         return 1;
-      }
+   public static int jarvisOne(int counter){
+        return 1;
+
+   }   
       
-      // turn two logic
-      if (counter ==2){
+   public static int jarvisTwo(int counter){
+
          if(checkForDuplicate(3)){
            return 3;
          }
          else{
             return 7; 
          }        
-      }      
-      
-      //turn three logic
-      if(counter == 4){
-         if(CheckForTwo()){
+   }   
+   
+   public static int jarvisThree(int counter){
+      if(CheckForTwo()){
             if(checkForDuplicate(MoveForTwo())){
                return MoveForTwo();
             }
@@ -292,14 +325,14 @@ public class AITicTacToe {
                return 9; 
          }else if (checkForDuplicate(7)){
                return 7; 
-         }else if (checkForDuplicate(3)){
+         } else {
                return 3; 
          }
-       }   
-                
-     //turn four logic       
-      if(counter == 6){
-         if(CheckForTwo()){
+    } 
+       
+   
+   public static int jarvisFour(int counter){
+      if(CheckForTwo()){
             if(checkForDuplicate(MoveForTwo())){
                return MoveForTwo();
             }
@@ -308,15 +341,13 @@ public class AITicTacToe {
                return 9; 
             }else  if (checkForDuplicate(7)){
                return 7; 
-            }else if (checkForDuplicate(3)){
+            } else {
                return 3; 
             }
-      }         
-      
-      
-       //turn five logic       
-      if(counter == 8){
-         if(CheckForTwo()){
+   }      
+   
+   public static int jarvisFive(int counter){  
+        if(CheckForTwo()){
             if(checkForDuplicate(MoveForTwo())){
                return MoveForTwo();
             }
@@ -325,38 +356,29 @@ public class AITicTacToe {
                return 9; 
             } else if (checkForDuplicate(7)){
                return 7; 
-            }else if (checkForDuplicate(3)){
+            }else {
                return 3; 
             }
-         } 
-         
-         //turn six logic       
-      if(counter == 10){
-         if(CheckForTwo()){
-            if(checkForDuplicate(MoveForTwo())){
-               return MoveForTwo();
-            }
-         }           
-      } 
-      
-       System.out.println("Spillage");
-       return 7;    
-    }   
+    } 
+    
+    public static int jarvisSix(int counter){
+          return MoveForTwo();          
+    } 
  
    public static boolean CheckForTwo() {
             
             int beginning = 0; 
             
    			if(counter % 2 != 0){
-                 beginning = 2;
+                 beginning = 1;
             }else{
-               beginning = 1; 
+               beginning = 2; 
              }   
-
    		//Check for rows 
    		for (int x = 0; x <= 2; x++) {
    			
    			if (grid[x][1] == beginning && grid[x][0] == beginning || grid[x][2] == beginning && grid[x][0] == beginning || grid[x][2] == beginning && grid[x][1] == beginning){
+               System.out.println("I caught the two");
                return true; 
    			
    		   }
@@ -366,7 +388,6 @@ public class AITicTacToe {
    		for (int y = 0; y <= 2; y++) {
    			
             if (grid[1][y] == beginning && grid[0][y] == beginning || grid[2][y] == beginning && grid[0][y] == beginning || grid[2][y] == beginning && grid[1][y] == beginning){
-           
    				return true; 
    			
             }            
@@ -392,9 +413,9 @@ public class AITicTacToe {
             int beginning = 0; 
             
    			if(counter % 2 != 0){
-                 beginning = 2;
+                 beginning = 1;
             }else{
-               beginning = 1; 
+               beginning = 2; 
              }   
 
    		//Move for rows 
@@ -422,6 +443,7 @@ public class AITicTacToe {
                      if(checkForDuplicate(2)){
                         return 2; } 
                   }if(x ==2){
+                     System.out.println("I am giving request to win");
                     if(checkForDuplicate(8)){
                         return 8; }
  
